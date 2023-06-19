@@ -91,6 +91,11 @@ select {
 /* ---end class variables--- */
 
 /* general styling */
+body {
+    background-image: url(../images/bg-pattern-top-mobile.svg);
+    background-repeat: no-repeat;
+}
+
 .container {
     height: 100vh;
     font-family: var(--ff-league-spartan);
@@ -103,8 +108,6 @@ select {
     align-items: center;
     text-align: center;
     gap: 1.1em;
-    background-image: url(../images/bg-pattern-top-mobile.svg);
-    background-repeat: no-repeat;
 }
 
 .headline {
@@ -141,7 +144,7 @@ select {
 
 .star-group {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     gap: 10px;
     justify-content: center;
 
@@ -176,9 +179,9 @@ figcaption {
     grid-template-columns: 60px auto;
     grid-template-rows: auto;
     grid-template-areas: 
-    "pic     name"
-    "pic     type"
-    "comment comment";
+        "pic     name"
+        "pic     type"
+        "comment comment";
 }
 
 .avatar {
@@ -204,9 +207,61 @@ figcaption {
     color: var(--clr-white);
 }
 
+@media (min-width:781px) {
+    body {
+        background-image: url(../images/bg-pattern-top-desktop.svg);
+        background-repeat: no-repeat;
+    }
+
+    .container {
+        margin: 118px 165px 100px;
+    }
+
+    .section-top {
+        display: grid;
+        grid-template-columns: 440px auto;
+        grid-template-rows:  auto;
+        grid-template-areas:
+            "headline  rating"
+            "subhead   rating";
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .headline {
+        display: grid;
+        grid-area: headline;
+        text-align: start;
+    }
+
+    .sub-headline {
+        display: grid;
+        grid-area: subhead;
+        text-align: start;
+        margin: 0;
+    }
+
+    .ratings {
+        display: grid;
+        grid-area: rating;
+    }
+
+    .rating-card {
+        display: flex;
+        flex-flow: row wrap;
+        align-items:center
+        
+    }
+
+    .star-group {
+        align-items: start;
+    }
+} /* end media <781px */
+
+
 footer {
     height: 100vh;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: flex-end;
 }
