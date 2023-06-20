@@ -20,3 +20,8 @@
 
 - Website - [Ted Rinquest](https://cnxwebdesign.com/)
 - Frontend Mentor - [@climb512](https://www.frontendmentor.io/profile/climb512)
+
+## Acknowlegements
+
+-- I finally discovered how to position the bk images after seeing this inspiration: 
+https://rock-n-roll-crc.github.io/

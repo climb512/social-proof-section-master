@@ -90,20 +90,55 @@ select {
 
 /* ---end class variables--- */
 
+/* -- Hides the <h1> */
+.visually-hidden:not(:focus, :active) {
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+
 /* general styling */
 body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
-    background-image: url(../images/bg-pattern-top-desktop.svg), url(../images/bg-pattern-bottom-mobile.svg);
-        background-repeat: no-repeat;
-        background-position: left top, right bottom;
 }
 
 .container {
-    height: 100dvh;
+    height: 100vh;
     font-family: var(--ff-league-spartan);
 }
+
+.container::before {
+    content: "";
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../images/bg-pattern-top-mobile.svg") top 0 left 0 / contain
+      no-repeat;
+    z-index: -999;
+  }
+  
+  .container::after {
+    content: "";
+    height: 35%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url("../images/bg-pattern-bottom-mobile.svg") bottom 0 right 0 /
+      contain no-repeat;
+    z-index: -999;
+  }
+
 
 .section-top {
     display: flex;
@@ -140,7 +175,7 @@ body {
 .rating-card {
     display: flex;
     flex-flow: column wrap;
-    /* justify-self: center; */
+    align-items: center;
     gap: 10px;
     background-color: var(--clr-bg);
     border-radius: 10px;
@@ -172,7 +207,6 @@ figcaption {
 .customer-card {
     display: flex;
     flex-flow: column wrap;
-    /* justify-self: center; */
     gap: 14px;
     background-color: var(--crl-primary);
     border-radius: 10px;
@@ -213,32 +247,53 @@ figcaption {
     color: var(--clr-white);
 }
 
-@media (min-width:681px) {
-    /* body {
-        background-image: url(../images/bg-pattern-top-desktop.svg), url(../images/bg-pattern-bottom-mobile.svg);
-        background-repeat: no-repeat;
-        background-position: left top, right bottom;
-    } */
+/* @media (min-width:681px) { */
+    @media all and (width >= 800px) {
 
     .container {
-        margin: 118px 165px 100px ;
+        margin: 118px 100px 10px ;
     }
 
+    .container::before {
+        content: "";
+        height: 35%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url("../images/bg-pattern-top-desktop.svg") top 0 left 0 / contain
+          no-repeat;
+        z-index: -999;
+      }
+
+      .container::after {
+        content: "";
+        height: 35%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: url("../images/bg-pattern-bottom-desktop.svg") bottom 0 right 0 /
+          contain no-repeat;
+        z-index: -999;
+      }
+
     .section-top {
-        /* min-width: 100%; */
         display: grid;
         grid-template-columns: minmax(200px, 440px) minmax(300px, 1fr);
         grid-template-rows:  auto;
         grid-template-areas:
             "headline  rating"
             "subhead   rating";
-        justify-content: space-between;
+            margin-right: 50px;
+            margin-left: 16px;
     }
 
     .headline {
         display: grid;
         grid-area: headline;
         text-align: start;
+        margin: 0;
     }
 
     .sub-headline {
@@ -272,19 +327,53 @@ figcaption {
     }
 
     .rating-card {
-        /* width: 442px; */
-        display: flex;
         flex-flow: row wrap;
+        padding: 10px 0 10px 30px;
     }
 
     .star-group {
         align-items: start;
     }
-} /* end media <781px */
 
-footer {
+    .section-bottom { 
+        gap: 0;
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        grid-template-rows: 6% 6% min-content 6% 6%;
+        grid-template-areas:
+            " D . . "
+            " D E . "
+            " D E F "
+            " . E F "
+            " . . F";
+    }
+
+    .customer-card:nth-child(1) {
+        grid-area: D;
+    }
+
+    .customer-card:nth-child(2) {
+        grid-area: E;
+    }
+
+    .customer-card:nth-child(3) {
+        grid-area: F;
+    }
+
+    .customer-card {
+        display: flex;
+        justify-content: center;
+        flex-flow: column wrap;
+        background-color: var(--crl-primary);
+        border-radius: 10px;
+        padding: 22px;
+        margin: 0 14px;
+    }
+} /* end media >681px */
+
+/* footer {
     margin-top: auto;
-}
+} */
 
 .attribution {
     font-size: 11px;
