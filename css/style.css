@@ -248,7 +248,7 @@ figcaption {
 }
 
 /* @media (min-width:681px) { */
-    @media all and (width >= 800px) {
+@media all and (width >= 800px) {
 
     .container {
         margin: 118px 100px 10px ;
@@ -264,23 +264,22 @@ figcaption {
         background: url("../images/bg-pattern-top-desktop.svg") top 0 left 0 / contain
           no-repeat;
         z-index: -999;
-      }
+    }
 
-      .container::after {
+    .container::after {
         content: "";
         height: 35%;
         width: 100%;
         position: absolute;
         bottom: 0;
         right: 0;
-        background: url("../images/bg-pattern-bottom-desktop.svg") bottom 0 right 0 /
-          contain no-repeat;
+        background: url("../images/bg-pattern-bottom-desktop.svg") bottom 0 right 0 / contain no-repeat;
         z-index: -999;
-      }
+    }
 
     .section-top {
         display: grid;
-        grid-template-columns: minmax(200px, 440px) minmax(300px, 1fr);
+        grid-template-columns: minmax(330px, 440px) minmax(300px, 1fr);
         grid-template-rows:  auto;
         grid-template-areas:
             "headline  rating"
@@ -290,6 +289,9 @@ figcaption {
     }
 
     .headline {
+        width: 350px;
+        font-weight: var(--fw-bold);
+        font-size: 52px;
         display: grid;
         grid-area: headline;
         text-align: start;
@@ -297,6 +299,7 @@ figcaption {
     }
 
     .sub-headline {
+        font-size: 18px;
         display: grid;
         grid-area: subhead;
         text-align: start;
@@ -346,6 +349,10 @@ figcaption {
             " D E F "
             " . E F "
             " . . F";
+    }
+
+    figcaption {
+        padding-top: 5px;
     }
 
     .customer-card:nth-child(1) {
